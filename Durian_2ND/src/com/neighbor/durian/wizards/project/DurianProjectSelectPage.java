@@ -41,6 +41,16 @@ import com.neighbor.durian.common.Messages;
 
 @SuppressWarnings("restriction")
 public class DurianProjectSelectPage extends WizardPage {
+
+	private static final String PROJECT_ID_SPRING_BASE = "100";
+	private static final String PROJECT_ID_SPRING_MVC = "101";
+	private static final String PROJECT_ID_SPRING_SIMPLE = "102";
+	private static final String PROJECT_ID_TCP_BASE = "200";
+	private static final String PROJECT_ID_TCP_SERVER = "201";
+	private static final String PROJECT_ID_TCP_CLIENT = "202";
+	private static final String PROJECT_ID_GOVERNMENT_BASE = "300";
+	private static final String PROJECT_ID_GOVERNMENT = "301";
+
 	private static final String PAGE_TITLE = Messages.DurianProjectSelectPage_title;
 	private static final String PAGE_DESCRIPTION = Messages.DurianProjectSelectPage_description;
 
@@ -99,15 +109,15 @@ public class DurianProjectSelectPage extends WizardPage {
 
 		ProjectObject root = new ProjectObject();
 
-		ProjectObject springParent = new ProjectObject("Spring", "100"); //$NON-NLS-1$
-		springParent.setChildProject(new ProjectObject[] { new ProjectObject("Spring MVC Project", "101"), //$NON-NLS-1$
-						new ProjectObject("Spring Simple Project", "102") }); //$NON-NLS-1$
+		ProjectObject springParent = new ProjectObject("Spring", PROJECT_ID_SPRING_BASE); //$NON-NLS-1$
+		springParent.setChildProject(new ProjectObject[] { new ProjectObject("Spring MVC Project", PROJECT_ID_SPRING_MVC), //$NON-NLS-1$
+						new ProjectObject("Spring Simple Project", PROJECT_ID_SPRING_SIMPLE) }); //$NON-NLS-1$
 
-		ProjectObject TcpParent = new ProjectObject("TCP", "200"); //$NON-NLS-1$
-		TcpParent.setChildProject(new ProjectObject[] { new ProjectObject("TCP Server Project", "201"), //$NON-NLS-1$
-						new ProjectObject("TCP Client Project", "202") }); //$NON-NLS-1$
-		ProjectObject GovernmentParent = new ProjectObject("전자정부 프레임워크", "300"); //$NON-NLS-1$
-		GovernmentParent.setChildProject(new ProjectObject[] { new ProjectObject("전자정부 프레임워크 Project", "301") }); //$NON-NLS-1$
+		ProjectObject TcpParent = new ProjectObject("TCP", PROJECT_ID_TCP_BASE); //$NON-NLS-1$
+		TcpParent.setChildProject(new ProjectObject[] { new ProjectObject("TCP Server Project", PROJECT_ID_TCP_SERVER), //$NON-NLS-1$
+						new ProjectObject("TCP Client Project", PROJECT_ID_TCP_CLIENT) }); //$NON-NLS-1$
+		ProjectObject GovernmentParent = new ProjectObject("전자정부 프레임워크", PROJECT_ID_GOVERNMENT_BASE); //$NON-NLS-1$
+		GovernmentParent.setChildProject(new ProjectObject[] { new ProjectObject("전자정부 프레임워크 Project", PROJECT_ID_GOVERNMENT) }); //$NON-NLS-1$
 
 		root.setChildProject(new ProjectObject[] { springParent, TcpParent, GovernmentParent });
 
@@ -153,15 +163,15 @@ public class DurianProjectSelectPage extends WizardPage {
 
 		DurianProjectWizard wizard = (DurianProjectWizard) getWizard();
 
-		if ("101".equals(id) == true) {
+		if (PROJECT_ID_SPRING_MVC.equals(id) == true) {
 			return wizard.getSpringMVCPropertiesPage();
-		} else if ("102".equals(id) == true) {
+		} else if (PROJECT_ID_SPRING_SIMPLE.equals(id) == true) {
 			return wizard.getSpringSimplePropertiesPage();
-		} else if ("201".equals(id) == true) {
+		} else if (PROJECT_ID_TCP_CLIENT.equals(id) == true) {
 			return wizard.getTcpClientPropertiesPage();
-		} else if ("202".equals(id) == true) {
+		} else if (PROJECT_ID_TCP_SERVER.equals(id) == true) {
 			return wizard.getTcpServerPropertiesPage();
-		} else if ("301".equals(id) == true) { return wizard.getGovernmentPropertiesPage(); }
+		} else if (PROJECT_ID_GOVERNMENT.equals(id) == true) { return wizard.getGovernmentPropertiesPage(); }
 
 		return null;
 	}
@@ -184,15 +194,17 @@ public class DurianProjectSelectPage extends WizardPage {
 		public void doubleClick(DoubleClickEvent event) {
 			selection = event.getSelection();
 			ProjectObject object = (ProjectObject) ((TreeSelection) selection).getFirstElement();
-			
-			if(object.hasChildProjectList() == true) {
-				if(treeViewer.getExpandedState(object) == true) {
+
+			if (object.hasChildProjectList() == true) {
+				if (treeViewer.getExpandedState(object) == true) {
 					treeViewer.setExpandedState(object, false);
 				} else {
 					treeViewer.setExpandedState(object, true);
 				}
+			} else {
+				getContainer().showPage(getNextPage());
 			}
-			
+
 		}
 	};
 

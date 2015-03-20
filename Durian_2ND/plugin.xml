@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.editors">
+      <editor
+            name="Durian Sample XML Editor"
+            extensions="xml"
+            icon="icons/sample.gif"
+            contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
+            class="com.neighbor.durian.editors.XMLEditor"
+            id="com.neighbor.durian.editors.XMLEditor">
+      </editor>
+      <editor
+            name="Durian Sample Multi-page Editor"
+            extensions="mpe"
+            icon="icons/sample.gif"
+            contributorClass="com.neighbor.durian.editors.MultiPageEditorContributor"
+            class="com.neighbor.durian.editors.MultiPageEditor"
+            id="com.neighbor.durian.editors.MultiPageEditor">
+      </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.importWizards">
+      <category
+           name="Neighbor System"
+            id="com.neighbor.durian.importWizards.sampleCategory">
+      </category>
+      <wizard
+            name="Durian Import File"
+            icon="icons/sample.gif"
+            category="com.neighbor.durian.importWizards.sampleCategory"
+            class="com.neighbor.durian.importWizards.ImportWizard"
+            id="com.neighbor.durian.importWizards.ImportWizard">
+         <description>
+            Import a file from the local file system into the workspace.
+         </description>
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            name="Neighbor System"
+            id="com.neighbor.durian">
+      </category>
+      <wizard
+            category="com.neighbor.durian"
+            class="com.neighbor.durian.wizards.project.DurianProjectWizard"
+            icon="icons/sample.gif"
+            id="com.neighbor.durian.wizards.SampleNewWizard"
+            name="New Durian Project Wizard"
+            project="true">
+      </wizard>
+   </extension>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            name="Durian Sample Preferences"
+            class="com.neighbor.durian.preferences.SamplePreferencePage"
+            id="com.neighbor.durian.preferences.SamplePreferencePage">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.neighbor.durian.preferences.PreferenceInitializer">
+      </initializer>
+   </extension>
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+            name="Durian Sample Page"
+            nameFilter="*.*"
+            class="com.neighbor.durian.properties.SamplePropertyPage"
+            id="com.neighbor.durian.properties.samplePropertyPage">
+         <enabledWhen>
+            <instanceof
+                  value="org.eclipse.core.resources.IFile">
+            </instanceof>
+         </enabledWhen>
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="Neighbor System"
+            id="com.neighbor.durian">
+      </category>
+      <view
+            name="Durian Sample View"
+            icon="icons/sample.gif"
+            category="com.neighbor.durian"
+            class="com.neighbor.durian.views.SampleView"
+            id="com.neighbor.durian.views.SampleView">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="com.neighbor.durian.views.SampleView">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+
+</plugin>

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Durian_2ND
 Bundle-SymbolicName: com.neighbor.durian;singleton:=true
-Bundle-Version: 0.0.1
+Bundle-Version: 0.0.4
 Bundle-Activator: com.neighbor.durian.Activator
 Bundle-Vendor: neighbor system
 Require-Bundle: org.eclipse.ui,

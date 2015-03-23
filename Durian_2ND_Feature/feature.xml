@@ -2,7 +2,7 @@
 <feature
       id="Durian_2ND_Feature"
       label="Durian_2ND_Feature"
-      version="0.0.1"
+      version="0.0.4"
       provider-name="neighbor system">
 
    <description url="http://www.example.com/description">
@@ -21,7 +21,35 @@
          id="com.neighbor.durian"
          download-size="0"
          install-size="0"
-         version="0.0.0"
+         version="0.0.4"
+         unpack="false"/>
+
+   <plugin
+         id="org.springsource.ide.eclipse.commons.quicksearch"
+         download-size="0"
+         install-size="0"
+         version="3.6.3.201411271002-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springsource.ide.eclipse.commons.core"
+         download-size="0"
+         install-size="0"
+         version="3.6.3.201411271002-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springsource.ide.eclipse.commons.frameworks.core"
+         download-size="0"
+         install-size="0"
+         version="3.6.3.201411271002-RELEASE"
+         unpack="false"/>
+
+   <plugin
+         id="org.springsource.ide.eclipse.commons.livexp"
+         download-size="0"
+         install-size="0"
+         version="3.6.3.201411271002-RELEASE"
          unpack="false"/>
 
 </feature>

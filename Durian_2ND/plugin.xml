@@ -48,7 +48,7 @@
             category="com.neighbor.durian"
             class="com.neighbor.durian.wizards.project.DurianProjectWizard"
             icon="icons/sample.gif"
-            id="com.neighbor.durian.wizards.SampleNewWizard"
+            id="com.neighbor.durian.wizards.newWizard"
             name="New Durian Project Wizard"
             project="true">
       </wizard>

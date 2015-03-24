@@ -117,5 +117,88 @@
             name="Neighbor Development">
       </perspective>
    </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="com.neighbor.durian.commands.category"
+            name="Sample Category">
+      </category>
+      <command
+            categoryId="com.neighbor.durian.commands.category"
+            id="com.neighbor.durian.commands.sampleCommand1"
+            name="Command 1">
+      </command>
+      <command
+            categoryId="com.neighbor.durian.commands.category"
+            id="com.neighbor.durian.commands.sampleCommand2"
+            name="Command 2">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="com.neighbor.durian.handlers.SampleHandler"
+            commandId="com.neighbor.durian.commands.sampleCommand2">
+      </handler>
+      <handler
+            class="com.neighbor.durian.handlers.SampleHandler"
+            commandId="com.neighbor.durian.commands.sampleCommand1">
+      </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.neighbor.durian.commands.sampleCommand1"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+6">
+      </key>
+      <key
+            commandId="com.neighbor.durian.commands.sampleCommand2"
+            contextId="org.eclipse.ui.contexts.window"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+7">
+      </key>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="com.neighbor.durian.menus.sampleMenu"
+               label="Neighbor Menu"
+               mnemonic="M">
+            <command
+                  commandId="com.neighbor.durian.commands.sampleCommand1"
+                  id="com.neighbor.durian.menus.sampleCommand1"
+                  mnemonic="S"
+                  style="push">
+            </command>
+            <command
+                  commandId="com.neighbor.durian.commands.sampleCommand2"
+                  id="com.neighbor.durian.menus.sampleCommand2"
+                  style="push">
+            </command>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.neighbor.durian.toolbars.sampleToolbar">
+            <command
+                  commandId="com.neighbor.durian.commands.sampleCommand1"
+                  icon="icons/sample.gif"
+                  id="com.neighbor.durian.toolbars.sampleCommand1"
+                  tooltip="Say hello world 1">
+            </command>
+            <command
+                  commandId="com.neighbor.durian.commands.sampleCommand2"
+                  icon="icons/sample.gif"
+                  id="com.neighbor.durian.toolbars.sampleCommand2"
+                  tooltip="Say hello world 2">
+            </command>
+         </toolbar>
+      </menuContribution>
+   </extension>
 
 </plugin>

@@ -9,15 +9,15 @@
             extensions="xml"
             icon="icons/sample.gif"
             contributorClass="org.eclipse.ui.texteditor.BasicTextEditorActionContributor"
-            class="com.neighbor.durian.editors.XMLEditor"
+            class="com.neighbor.durian.ui.editors.XMLEditor"
             id="com.neighbor.durian.editors.XMLEditor">
       </editor>
       <editor
             name="Durian Sample Multi-page Editor"
             extensions="mpe"
             icon="icons/sample.gif"
-            contributorClass="com.neighbor.durian.editors.MultiPageEditorContributor"
-            class="com.neighbor.durian.editors.MultiPageEditor"
+            contributorClass="com.neighbor.durian.ui.editors.MultiPageEditorContributor"
+            class="com.neighbor.durian.ui.editors.MultiPageEditor"
             id="com.neighbor.durian.editors.MultiPageEditor">
       </editor>
    </extension>
@@ -31,7 +31,7 @@
             name="Durian Import File"
             icon="icons/sample.gif"
             category="com.neighbor.durian.importWizards.sampleCategory"
-            class="com.neighbor.durian.importWizards.ImportWizard"
+            class="com.neighbor.durian.ui.importWizards.ImportWizard"
             id="com.neighbor.durian.importWizards.ImportWizard">
          <description>
             Import a file from the local file system into the workspace.
@@ -46,7 +46,7 @@
       </category>
       <wizard
             category="com.neighbor.durian"
-            class="com.neighbor.durian.wizards.project.DurianProjectWizard"
+            class="com.neighbor.durian.ui.wizards.project.DurianProjectWizard"
             icon="icons/sample.gif"
             id="com.neighbor.durian.wizards.newWizard"
             name="New Durian Project Wizard"
@@ -72,7 +72,7 @@
       <page
             name="Durian Sample Page"
             nameFilter="*.*"
-            class="com.neighbor.durian.properties.SamplePropertyPage"
+            class="com.neighbor.durian.ui.properties.SamplePropertyPage"
             id="com.neighbor.durian.properties.samplePropertyPage">
          <enabledWhen>
             <instanceof
@@ -91,27 +91,31 @@
             name="Durian Sample View"
             icon="icons/sample.gif"
             category="com.neighbor.durian"
-            class="com.neighbor.durian.views.SampleView"
+            class="com.neighbor.durian.ui.views.SampleView"
             id="com.neighbor.durian.views.SampleView">
       </view>
-   </extension>
-   <extension
-         point="org.eclipse.ui.perspectiveExtensions">
-      <perspectiveExtension
-            targetID="org.eclipse.jdt.ui.JavaPerspective">
-         <view
-               ratio="0.5"
-               relative="org.eclipse.ui.views.ProblemView"
-               relationship="right"
-               id="com.neighbor.durian.views.SampleView">
-         </view>
-      </perspectiveExtension>
+      <view
+            category="NeighborPluginProject"
+            class="com.neighbor.durian.ui.neighborview.NeighborExplorerPart"
+            id="com.neighbor.durian.ui.neighborview.NeighborExplorer"
+            name="Neighbor Explorer"
+            restorable="true">
+      </view>
    </extension>
    <extension
          point="org.eclipse.help.contexts">
       <contexts
             file="contexts.xml">
       </contexts>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectives">
+      <perspective
+            class="com.neighbor.durian.ui.perspectives.NeighborEngPerspective"
+            icon="icons/releng_gears.gif"
+            id="com.neighbor.durian.perspectives.NeighborEngPerspective"
+            name="Neighbor Development">
+      </perspective>
    </extension>
 
 </plugin>

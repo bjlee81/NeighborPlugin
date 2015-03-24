@@ -32,6 +32,7 @@ import org.eclipse.ui.ISharedImages;
 import org.eclipse.ui.PlatformUI;
 
 import com.neighbor.durian.common.Messages;
+import org.eclipse.jface.viewers.ViewerSorter;
 
 /**
  * The "New" wizard page allows setting the container for the new file as well
@@ -41,6 +42,13 @@ import com.neighbor.durian.common.Messages;
 
 @SuppressWarnings("restriction")
 public class DurianProjectSelectPage extends WizardPage {
+	private static class Sorter extends ViewerSorter {
+		public int compare(Viewer viewer, Object e1, Object e2) {
+			Object item1 = e1;
+			Object item2 = e2;
+			return 0;
+		}
+	}
 
 	private static final String PROJECT_ID_SPRING_BASE = "100";
 	private static final String PROJECT_ID_SPRING_MVC = "101";
@@ -84,6 +92,7 @@ public class DurianProjectSelectPage extends WizardPage {
 		container.setLayout(layout);
 		container.setLayoutData(layoutData);
 		treeViewer = new TreeViewer(container, SWT.NULL);
+		treeViewer.setSorter(new Sorter());
 		treeViewer.setContentProvider(new ProjectContentProvider());
 		treeViewer.setLabelProvider(new ProjectLabelProvider());
 		treeViewer.setUseHashlookup(true);

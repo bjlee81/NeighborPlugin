@@ -52,6 +52,25 @@
             name="New Durian Project Wizard"
             project="true">
       </wizard>
+      <wizard
+            category="com.neighbor.durian"
+            icon="icons/releng_gears.gif"
+            id="com.neighbor.durian.ui.wizards.core.DurianNewClassCreationWizard"
+            name="Class">
+         <class
+               class="com.neighbor.durian.ui.wizards.core.DurianNewClassCreationWizard">
+            <parameter
+                  name="javatype"
+                  value="true">
+            </parameter>
+         </class>
+         <description>
+            New Durian Java Class
+         </description>
+         <keywordReference
+               id="org.eclipse.jdt.ui.wizards.java">
+         </keywordReference>
+      </wizard>
    </extension>
    <extension
          point="org.eclipse.ui.preferencePages">

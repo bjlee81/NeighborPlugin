@@ -45,12 +45,17 @@ public class NeighborEngPerspective implements IPerspectiveFactory {
 		bottom.addView("org.eclipse.team.ui.GenericHistoryView"); // NON-NLS-1
 		bottom.addPlaceholder(IConsoleConstants.ID_CONSOLE_VIEW);
 		
-		IFolderLayout outLineLayout = layout.createFolder("outLine", IPageLayout.RIGHT, 0.75f, editorArea);
+		IFolderLayout rightFolerLayout= layout.createFolder("rightFolder", IPageLayout.RIGHT, 0.75f, editorArea);
+		
+		IFolderLayout outLineLayout = layout.createFolder("outLine", IPageLayout.TOP, 0.50f, "rightFolder");
 		outLineLayout.addView(IPageLayout.ID_OUTLINE);
-
-		layout.addView("org.eclipse.ant.ui.views.AntView", IPageLayout.BOTTOM, 0.55f, "outLine");
-		layout.addView("org.eclipse.jdt.junit.ResultView", IPageLayout.BOTTOM, 0.55f, "org.eclipse.ant.ui.views.AntView");
-		layout.addPlaceholder("org.eclipse.wst.server.ui.ServersView", IPageLayout.BOTTOM, 0.55f, "outLine");
+		rightFolerLayout.addView("outLine");
+		
+		IFolderLayout serverLayout = layout.createFolder("server", IPageLayout.BOTTOM, 0.50f, "rightFolder");
+		serverLayout.addPlaceholder("org.eclipse.wst.server.ui.ServersView");
+		serverLayout.addView("org.eclipse.ant.ui.views.AntView");
+		serverLayout.addView("org.eclipse.jdt.junit.ResultView");
+		rightFolerLayout.addView("server");
 		
 				
 		layout.addFastView("org.eclipse.team.ccvs.ui.RepositoriesView",0.50f); //NON-NLS-1
